@@ -1,0 +1,47 @@
+File Download
+File Upload
+Actions
+================================
+File Download
+Using selenium we cannot verify the content of the downloaded files. We can got to some websites, click on links to download files using selenium. But we cannot verify the content. Using java+other libraries/dependencies we can verify if the file exists adn we can verify the contents.
+File Upload
+How to uplaod file manually ?
+1.Click on the button(Choose file) which opens file explorere using which we choose some file
+2.Click another button(Upload) which completes the uploading
+How to get the Path of the file?
+MAC
+1.Right click on the file
+2.Hold option key
+3.Select option Copy “yourfilename” as Pathname
+WINDOWS
+1.Hold Shift button
+2.Right click on file
+3.Copy as Path
+Create resources
+1.Right click on test
+2.New -> Directory
+3.Name: resources
+4.OK
+Create a test file
+1.Right click on resources
+2.new-File
+3.name: testfile.txt
+
+
+system.getProperty(); parameters to be used:
+
+-->  os.version              :  OS Version
+-->  os.name                 :  OS Name
+-->  os.arch                 :  OS Architecture
+-->  java.compiler           :  Name of the compiler you are using
+-->  java.ext.dirs           :  Extension directory path
+-->  java.library.path       :  Paths to search libraries whenever loading
+-->  path.separator          :  Path separator
+-->  file.separator          :  File separator
+-->  user.dir                :  Current working directory of User
+-->  user.name               :  Account name of User
+-->  java.vm.version         :  JVM implementation version
+-->  java.vm.name            :  JVM implementation name
+-->  java.home               :  Java installation directory
+-->  java.runtime.version    :  JVM version
+

@@ -1,0 +1,89 @@
+Class Notes-9
+DROPDOWNS
+dropdown menu is a menu that offers a list of options.Most of the time we only allowed to choose one.
+
+select--> html tag
+SELECT class --> class from selenium
+
+SELECT class only works with the webelement which has select tag.
+How to use SELECT class
+1.make sure the dropdown has select tag.
+2.locate the dropdown just like any other element
+3.create object using Select class by passing the lement that we locate step 2 as a constractor
+
+getOptions()--> returns all the available optiosn from the dropdown list.
+
+getFirstSelectedOption()--> returns webelement, first selected option
+
+HOW TO SELECT OPTION FROM DROPDOWN LIST
+1.Using Visible Text
+selectByVisibleText("text") --> selecting based on the visible text of options
+
+2.Using index number
+selectByIndex(indexNumber)-->select based on index of options(starts from 0 )
+
+3.Using value attribute
+selectByValue(option value) -->select based on value of value attribute
+
+NO SELECT DROPDOWN
+
+When we try to use Select class with the dropdown which does not have select tag, we got
+UnexpectedTagNameException: Element should have been "select" but was "a"
+
+If we dont have select tag, we locate dropwdown just like any other elements and to see options with clicking or hovering over to it.
+
+To get all options from dropdown, we can use common locator between them(exp: classname,tagname etc) then we can use List methods to get the size and expected option from the list.
+
+we use click() method to click different options., we can either locate the option seperately or use index of the option form the list.
+=========================
+Popups,alerts,Iframes,Windows
+================================
+Popups,alerts,modal,dialog,overlay --> anything pop ups on the webpage.
+How to handle pop ups
+we have 2 different way of handling pop ups, based on their structure.
+1.HTML POP UPS
+if the pop up is from html, we deal with it as if it is another web element.
+2.JAVASCRIPT ALERTS
+second types of pop up came from javascript, mostly known as js alerts. We CANNOT right lcick on those alers and see html(Inspect)
+To deal with non html alerts, we have special class from selenium which is Alert
+
+how to point the alert ?
+Alert alert = driver.switchTo().alert();
+
+and we have accept, dismiss, sendkeys,gettext method for alerts.
+
+If there is no alert on the webpage, and we try to switch, we get NoAlertPresentException: no such alert
+================================
+Tab and Windows
+In selenium there is no difference between tabs and windows.By default selenium controls one html page.When we open the page first time it points that page only. When we open a new tab/window, it will still be looking at the old window. To do any interaction with the new window we have to switch to new window.
+
+driver.getWindowHandle(); --> this returns some unique code belongs the windows that we open with driver.get()
+
+handle--> unique identifier for windows
+driver.getWindowHandle() --> returns the handle of the current windows
+
+driver.getWindowHandles()--> returns the set of the all open windows.
+
+
+HOW TO HANDLE MORE THEN 2 WINDOWS/TABS in SELENIUM
+If you have more then 2 windows, we need some unique identifier for us like title, url etc. Then based on our identifier we will keep switching windows until we find our expected window.
+================================
+Frames
+NoSuchElementException
+1.locator might be wrong(dynamic or not correct)
+2.not enough wait time
+3.iframe or frame
+
+In html we can have one html page inside to another. This is made possible by tag <iframe> or <frame>. using frames we can put html inside html. when we have page with frames, selenium cannot control what is inside the frame. we have to switch iframe first.
+When we switch to iframe it will not see the default page, until we switched back.
+
+
+-we can only switch one at a time, cannot switch to grandchild directly.
+-cannot switch to siblings, only parent to child
+
+HTML (defaultContent) --> first html
+frame-top (parentFrame) --> one level up
+0 left
+1 middle
+2 right
+frame-bottom

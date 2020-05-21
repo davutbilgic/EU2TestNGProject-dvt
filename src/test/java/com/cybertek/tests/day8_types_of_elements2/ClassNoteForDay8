@@ -1,0 +1,72 @@
+Class Notes-8
+TestNG
+-@Test
+-@BeforeMethod,AfterMethod
+-@BeforeClass,@AfterClass
+-@Ignore
+-Assertions
+-Assert.assertEquals(actual,expected,message)
+-Assert.assertTrue(condition)
+-Assert.assertNotEquals(actual,expected)
+-Assert.assertFalse(condition,message)
+Radio Buttons
+-isSelected() --> check is it selected or not --> returns boolean
+-click()--> clicks radio buttons too
+-isEnabled() --> checks webelement is enabled or not --> return boolean
+===================
+checkbox
+getAttribute()
+findElements
+isDisplayed
+Dropdowns
+====================
+Checkboxes
+Checkboxes are type of input elements which can be selected or unselected.
+When we have a group of checkboxes selecting or unselecting one checkbox does NOT affect on the selection of the other one.
+
+Just like radio buttons we use isSelected() method to check checkboxes are selected or not.
+To select or unselect the checkboxes we use click() method.
+
+
+getAttribute("attributeName")
+//when you pass valid atrribute name to getAttribute method it will return the valie of that attribute.
+
+//if you pass non exist attribute to the getAttribute method it will return NULL no to you.
+
+//"outerHTML" returns full html of that element Example:
+
+<input type="radio" id="blue" name="color" checked="">
+System.out.println(radioButton.getAttribute("outerHTML"));
+
+we can use this full html to retrieve text of webelement too.
+
+When we meed text of WebElement
+1.getText()
+2.getAttribute("value");
+3.getAttribute("innerHTML") --> it will work certain cases
+4.getAttribute("outerHTML") -->manipulate
+====================================
+List of WebElements
+
+driver.findElements();
+we were trying to locate one element until now. We will learn how to locate multiple elements and intertact with it.
+
+1.Find common locators for elements that you want to locate
+2.pass your locator to findElements method (not findElement)
+3.List<WebElement> buttons = driver.findElements(yourLocator)
+
+after this point buttons keep list of webelements, we have to reach them to apply selenium methods either with loop or .get() list method
+
+findElements() method does not throw NoSuchElementException, if your locator is wrong it will return you empty list.
+=============================
+DROPDOWNS
+dropdown menu is amenu that offers a list of options.Most of the time we only allowed to choose one.
+
+select--> html tag
+SELECT class --> class from selenium
+
+SELECT class only works with the webelement which has select tag.
+How to use SELECT class
+1.make sure the dropdown has select tag.
+2.locate the dropdown just like any other element
+3.create object using Select class by passing the lement that we locate step 2 as a constractor

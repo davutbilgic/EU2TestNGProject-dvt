@@ -1,0 +1,97 @@
+Class Notes-7
+Todays Agenda
+QUIZ
+TestNG
+-Assertions
+-BeforeAfterMethod
+RadioButtons
+Enabled/Disabled WebElement
+=============================
+TestNG
+Developers write their code and do Unit testing. Inn unit testing smallest block of code is tested.
+
+Java: TestNG and Junit
+C#: Nunit
+phyton: pytest
+
+TestNG allows us to run, organize tests, it can do assertions and verification, generate reports.
+
+Install TestNG
+
+1.go to mvnrepo
+2.get testNG dependency
+<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+<dependency>
+<groupId>org.testng</groupId>
+<artifactId>testng</artifactId>
+<version>7.1.0</version>
+<scope>test</scope>
+</dependency>
+
+@Test--> this is an annotation, it means the method after this @Test is TestNG test method. we can run testNg test methods.
+
+We can have multiple @Test s in one class,
+IF we wanat to run specific test, right click to test name and run or click run botton next to it.
+
+To run all the tests inside the one class, right click run button next to class name or click empty space inside the class and run.
+
+@BeforeMethod -->runs once before each method with @Test annotations
+@AfterMethod --> runs once after each method with @Test annotations
+
+How to ignore some @Test to run ?
+@Ignore --> we can put on top of the @Test that we want to ignore
+OR
+we can comment out the @Test annotation
+
+@BeforeClass --> runs only once before everything in the class
+@AfterClass --> runs only once after everything in the class
+
+<BeforeClass>
+<BeforeMethod>test1<AfterMethod>
+<BeforeMethod>test2<AfterMethod>
+<BeforeMethod>test3<AfterMethod>
+<AfterClass>
+======================================
+Assertions
+
+Assert --> this is the class in testing, it has methods used to do assertions like when we compare values
+
+in testing, if assertion fails, rest of the method will NOT execute, it will be ignored/skipped.
+
+If we still want to run rest of the code even if assertion fail,we will use soft assertions.It will execute the rest (not learning today)
+
+if you code fail in test1,it will NOT effect other @Test s, they will run seperately.
+
+NOTE:Whetever your test case fail or not , your before and after method will executed always.So even if your code fails, you can quit from your driver.
+
+Assert.assertEquals(actual,expected)-->it checks two value same or not
+
+Assert.assertTrue(condition) --> it checks whetever condition return true or not
+
+Assert.assertFalse(condition) --> it checks whetever condition return false or not
+
+Assert.assertNotEquals(actual,expected) -->verifies that two values are NOT equal to each other
+
+we can add message all of our assertions to see what we are checking
+
+Assert.assertTrue(condition,message)
+Assert.assertEquals(actual,expected,message)
+==================================
+Radio buttons
+
+Radio buttons is a type of elements in which only one option can be selected among group of options (Example:Gender - Male,Female,Other)
+
+Based on the requirements you might or might not have default option selected.
+
+//how to check radio button selected or not ?
+isSelected()--> if radio buttons selected it will return true, if not it will return false.
+
+//how to select radio button ?
+we can use click() method for selecting radio buttons too.
+
+//how can we check if the button is enabled ?
+isEnabled() --> method that returns true if the button enabled, if not it reutns false
+
+When we try to interact with disabled elements 2 things can happen:
+1.no action will be happen and code will not fail, not complain
+2.no action will be happen but we can get ElementNotInteractableException: element not interactable
