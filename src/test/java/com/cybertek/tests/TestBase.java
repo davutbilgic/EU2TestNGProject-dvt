@@ -57,9 +57,9 @@ public class TestBase {
     public void setUpMethod(){
         driver = Driver.get();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         actions = new Actions(driver);
-        wait = new WebDriverWait(driver,10);
+        wait = new WebDriverWait(driver,15);
         driver.get(ConfigurationReader.get("url"));
 
     }

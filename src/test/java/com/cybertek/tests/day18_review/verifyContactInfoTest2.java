@@ -1,8 +1,9 @@
 package com.cybertek.tests.day18_review;
 
-import com.cybertek.pages.LoginPage;
+import com.cybertek.pages.*;
 import com.cybertek.tests.TestBase;
 import com.cybertek.utilities.ConfigurationReader;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class verifyContactInfoTest2 extends TestBase {
@@ -28,7 +29,33 @@ public class verifyContactInfoTest2 extends TestBase {
 
         extentLogger.info("username: "+username);
         extentLogger.info("password: "+password);
+        extentLogger.info("Login as a Sales Manager");
+        loginPage.login(username,password);
 
+        extentLogger.info("Navigate to Custumers -- Contacts");
+        new DashboardPage().navigateToModule("Customers","Contacts");
+
+        ContactsPage contactsPage = new ContactsPage();
+
+        extentLogger.info("click on email mbrackstone9@example.com");
+        contactsPage.waitUntilLoaderScreenDisappear();
+        contactsPage.getContactEmail("mbrackstone9@example.com").click();
+
+        ContactInfoPage contactInfoPage = new ContactInfoPage();
+
+        String expectedFullname = "Mariam Brackstone";
+        String actualFullname = contactInfoPage.fullName.getText();
+
+        extentLogger.info("Verify fullname is " + expectedFullname);
+        Assert.assertEquals(actualFullname,expectedFullname,"Verify fullname");
+
+        extentLogger.info("Verify email is mbrackstone9@example.com");
+        Assert.assertEquals(contactInfoPage.email.getText(),"mbrackstone9@example.com","verify email");
+
+        extentLogger.info("Verify phone number is +18982323434");
+        Assert.assertEquals(contactInfoPage.phone.getText(),"+18982323434","verify phone");
+
+        extentLogger.pass("PASS: Contact Info Test");
     }
 
 }
