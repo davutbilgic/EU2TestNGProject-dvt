@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 public class TestCase3 extends TestBase {
 
     @Test
-    public void test1(){
+    public void test1() {
         /*
             1. Go to “https://qa1.vytrack.com/"
             2. Login as a store manager
@@ -23,7 +23,7 @@ public class TestCase3 extends TestBase {
             4. Verify that page subtitle "Options" is displayed
          */
 
-        extentLogger = report.createTest("Test Case1");
+        extentLogger = report.createTest("TestCase3-test1()");
 
         LoginPage loginPage = new LoginPage();
 
@@ -33,10 +33,10 @@ public class TestCase3 extends TestBase {
         extentLogger.info("username: " + username);
         extentLogger.info("password: " + password);
         extentLogger.info("Login as a Store Manager");
-        loginPage.login(username,password);
+        loginPage.login(username, password);
 
         extentLogger.info("Navigate to “Activities -> Calendar Events”");
-        new DashboardPage().navigateToModule("Activities","Calendar Events");
+        new DashboardPage().navigateToModule("Activities", "Calendar Events");
 
         extentLogger.info("Verify that page subtitle 'Options' is displayed");
         Assert.assertTrue(new CalendarEventsPage().options.isDisplayed());
@@ -45,14 +45,14 @@ public class TestCase3 extends TestBase {
     }
 
     @Test
-    public void test2(){
+    public void test2() {
         /*
             1. Go to “https://qa1.vytrack.com/"
             2. Login as a store manager
             3. Navigate to “Activities -> Calendar Events”
             4. Verify that page number is equals to "1"
          */
-        extentLogger = report.createTest("Test Case2");
+        extentLogger = report.createTest("TestCase3-test2()");
 
         LoginPage loginPage = new LoginPage();
 
@@ -62,13 +62,13 @@ public class TestCase3 extends TestBase {
         extentLogger.info("username: " + username);
         extentLogger.info("password: " + password);
         extentLogger.info("Login as a Store Manager");
-        loginPage.login(username,password);
+        loginPage.login(username, password);
 
         extentLogger.info("Navigate to “Activities -> Calendar Events”");
-        new DashboardPage().navigateToModule("Activities","Calendar Events");
+        new DashboardPage().navigateToModule("Activities", "Calendar Events");
 
         extentLogger.info("Verify that page number is equals to '1'");
-        Assert.assertEquals(new CalendarEventsPage().pageNumber.getAttribute("value"),"1");
+        Assert.assertEquals(new CalendarEventsPage().pageNumber.getAttribute("value"), "1");
 
         extentLogger.pass("PASS: TestCase3-test2() Test");
     }
@@ -81,7 +81,7 @@ public class TestCase3 extends TestBase {
             3. Navigate to “Activities -> Calendar Events”
             4. Verify that view per page number is equals to "25"
          */
-        extentLogger = report.createTest("Test Case3");
+        extentLogger = report.createTest("TestCase3-test3()");
 
         LoginPage loginPage = new LoginPage();
 
@@ -91,15 +91,16 @@ public class TestCase3 extends TestBase {
         extentLogger.info("username: " + username);
         extentLogger.info("password: " + password);
         extentLogger.info("Login as a Store Manager");
-        loginPage.login(username,password);
+        loginPage.login(username, password);
 
         extentLogger.info("Navigate to “Activities -> Calendar Events”");
-        new DashboardPage().navigateToModule("Activities","Calendar Events");
+        new DashboardPage().navigateToModule("Activities", "Calendar Events");
 
-        new CalendarEventsPage().waitUntilLoaderScreenDisappear();//net yavas oldugu icin biraz daha beklemesini istedim
+        //new CalendarEventsPage().waitUntilLoaderScreenDisappear();//net yavas oldugu icin biraz daha beklemesini istedim
+        BrowserUtils.waitFor(5);
 
         extentLogger.info("Verify that view per page number is equals to '25'");
-        Assert.assertEquals(new CalendarEventsPage().viewPerPageNumber.getText(),"25");
+        Assert.assertEquals(new CalendarEventsPage().viewPerPageNumber.getText(), "25");
 
         extentLogger.pass("PASS: TestCase3-test3() Test");
     }
@@ -112,7 +113,7 @@ public class TestCase3 extends TestBase {
             3. Navigate to “Activities -> Calendar Events”
             4. Verify that number of calendar events (rows in the table) is equals to number of records
          */
-        extentLogger = report.createTest("Test Case3");
+        extentLogger = report.createTest("TestCase3-test4()");
 
         LoginPage loginPage = new LoginPage();
         CalendarEventsPage calendarEventsPage = new CalendarEventsPage();
@@ -123,10 +124,10 @@ public class TestCase3 extends TestBase {
         extentLogger.info("username: " + username);
         extentLogger.info("password: " + password);
         extentLogger.info("Login as a Store Manager");
-        loginPage.login(username,password);
+        loginPage.login(username, password);
 
         extentLogger.info("Navigate to “Activities -> Calendar Events”");
-        new DashboardPage().navigateToModule("Activities","Calendar Events");
+        new DashboardPage().navigateToModule("Activities", "Calendar Events");
 
         BrowserUtils.waitFor(5);
         //calendarEventsPage.waitUntilLoaderScreenDisappear();
@@ -135,13 +136,13 @@ public class TestCase3 extends TestBase {
         String totalRecordText = calendarEventsPage.textOFnumberOfEvents.getText();//Get text Total of .... Records
         int expectedNumberOfEvents = Integer.valueOf(totalRecordText.replaceAll("[^0-9]", ""));//select number of in it
         int actualNumberOfEvents = calendarEventsPage.calculateNumberOfEvents();
-        Assert.assertEquals(actualNumberOfEvents,expectedNumberOfEvents);
+        Assert.assertEquals(actualNumberOfEvents, expectedNumberOfEvents);
 
         extentLogger.pass("PASS: TestCase3-test4() Test");
     }
 
     @Test
-    public void test5(){
+    public void test5() {
         /*
             1. Go to “https://qa1.vytrack.com/"
             2. Login as a store manager
@@ -150,7 +151,7 @@ public class TestCase3 extends TestBase {
             5. Verify that all calendar events were selected
          */
 
-        extentLogger = report.createTest("Test Case3");
+        extentLogger = report.createTest("TestCase3-test5()");
 
         LoginPage loginPage = new LoginPage();
         CalendarEventsPage calendarEventsPage = new CalendarEventsPage();
@@ -161,10 +162,10 @@ public class TestCase3 extends TestBase {
         extentLogger.info("username: " + username);
         extentLogger.info("password: " + password);
         extentLogger.info("Login as a Store Manager");
-        loginPage.login(username,password);
+        loginPage.login(username, password);
 
         extentLogger.info("Navigate to “Activities -> Calendar Events”");
-        new DashboardPage().navigateToModule("Activities","Calendar Events");
+        new DashboardPage().navigateToModule("Activities", "Calendar Events");
 
         //calendarEventsPage.waitUntilLoaderScreenDisappear();
         BrowserUtils.waitFor(6);
@@ -178,10 +179,54 @@ public class TestCase3 extends TestBase {
 
         extentLogger.pass("PASS: TestCase3-test5() Test");
     }
-//
-//    @Test
-//    public void test6(){
-//
-//    }
+
+    @Test
+    public void test6() {
+        /*
+            1. Go to “https://qa1.vytrack.com/"
+            2. Login as a store manager
+            3. Navigate to “Activities -> Calendar Events”
+            4. Select “Testers meeting”
+            5. Verify that following data is displayed:
+
+                Title               Testers meeting
+                Description         This is a a weekly testers meeting
+                Start               Nov 27, 2019, 9:30 AM
+                End                 Nov 27, 2019, 10:30 AM
+                All-Day Event       No
+                Organizer           Stephan Haley
+                Guests              Tom Smith
+                Recurrence          Weekly every 1 week on Wednesday
+                Call Via Hangout    No
+         */
+
+        extentLogger = report.createTest("TestCase3-test6()");
+
+        LoginPage loginPage = new LoginPage();
+        CalendarEventsPage calendarEventsPage = new CalendarEventsPage();
+
+        String username = ConfigurationReader.get("storemanager_username");
+        String password = ConfigurationReader.get("storemanager_password");
+
+        extentLogger.info("username: " + username);
+        extentLogger.info("password: " + password);
+        extentLogger.info("Login as a Store Manager");
+        loginPage.login(username, password);
+
+        extentLogger.info("Navigate to “Activities -> Calendar Events”");
+        new DashboardPage().navigateToModule("Activities", "Calendar Events");
+
+        BrowserUtils.waitFor(6);
+
+        extentLogger.info("Select 'Testers meeting'");
+        calendarEventsPage.testersMeeting.click();
+
+        extentLogger.info("Verify that following data is displayed:");
+        String actualControlTitle = calendarEventsPage.testerMeetingControlTitle.getText();
+        String expectedControlTitle = "Testers meeting";
+        Assert.assertEquals(actualControlTitle,expectedControlTitle);
+
+        extentLogger.pass("PASS: TestCase3-test6() Test");
+    }
 
 }

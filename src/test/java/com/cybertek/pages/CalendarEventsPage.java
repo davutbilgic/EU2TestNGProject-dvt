@@ -43,6 +43,11 @@ public class CalendarEventsPage extends BasePage {
     @FindBy(xpath = "//button[@data-toggle='dropdown']/input[@type='checkbox']")
     public WebElement checkboxClickableAll;
 
+    @FindBy(xpath = "//td[.='Testers meeting']")
+    public WebElement testersMeeting;
+
+    @FindBy(xpath = "//div[.='Testers meeting']")
+    public WebElement testerMeetingControlTitle;
 
     public int calculateNumberOfEvents() {
         viewPerPage.click();
@@ -95,13 +100,9 @@ public class CalendarEventsPage extends BasePage {
                     }
                 }
             } catch (NoSuchElementException e) {
-                Assert.assertTrue(checkboxClickableAll.isSelected());
+                //Assert.assertTrue(checkboxClickableAll.isSelected());
             }
-
-        } else {
-            Assert.assertTrue(checkboxClickableAll.isSelected());
         }
-
 
     }
 
