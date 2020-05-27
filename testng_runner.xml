@@ -2,14 +2,14 @@
 <suite name="Vytrack Automation" verbose="1">
     <test name="Vytrack Smoke Test">
 <!--        <packages>-->
-<!--            <package name="com.cybertek.tests.day17_extent_reports"></package>-->
-<!--            <package name="com.cybertek.tests.day15_staletest"></package>-->
-<!--&lt;!&ndash;            <package name=".*"></package>&ndash;&gt;-->
+<!--&lt;!&ndash;            <package name="com.cybertek.tests.day17_extent_reports"></package>&ndash;&gt;-->
+<!--&lt;!&ndash;            <package name="com.cybertek.tests.day15_staletest"></package>&ndash;&gt;-->
+<!--            <package name=".*"></package>-->
 <!--        </packages>-->
 
 <!--        <classes>-->
 <!--            <class name="com.cybertek.tests.day18_review.verifyContactInfoTest"></class>-->
-<!--            <class name="com.cybertek.tests.day16_pom.NegativeLoginTest"></class>-->
+<!--&lt;!&ndash;            <class name="com.cybertek.tests.day16_pom.NegativeLoginTest"></class>&ndash;&gt;-->
 
 <!--        </classes>-->
 
@@ -20,5 +20,7 @@
             </methods>
         </class>
         </classes>
+
+
     </test>
 </suite>
