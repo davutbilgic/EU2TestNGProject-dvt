@@ -2,6 +2,7 @@ package com.cybertek.tests.day18_review;
 
 import com.cybertek.pages.*;
 import com.cybertek.tests.TestBase;
+import com.cybertek.utilities.BrowserUtils;
 import com.cybertek.utilities.ConfigurationReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -40,7 +41,8 @@ public class verifyContactInfoTest extends TestBase {
         ContactsPage contactsPage = new ContactsPage();
 
         extentLogger.info("Click on mbrackstone9@example.com email");
-        contactsPage.waitUntilLoaderScreenDisappear();
+//        contactsPage.waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitFor(4);
         contactsPage.getContactEmail("mbrackstone9@example.com").click();
 
         ContactInfoPage contactInfoPage = new ContactInfoPage();

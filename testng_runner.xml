@@ -14,11 +14,12 @@
 <!--        </classes>-->
 
         <classes>
-        <class name="com.cybertek.tests.day16_pom.NegativeLoginTest">
-            <methods>
-                <include name="wrongPasswordTest"></include>
-            </methods>
-        </class>
+            <class name="com.cybertek.tests.day16_pom.NegativeLoginTest">
+                <methods>
+                    <exclude name="wrongPasswordTest"></exclude>
+
+                </methods>
+            </class>
         </classes>
 
 
