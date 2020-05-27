@@ -6,11 +6,9 @@ import com.cybertek.pages.LoginPage;
 import com.cybertek.tests.TestBase;
 import com.cybertek.utilities.BrowserUtils;
 import com.cybertek.utilities.ConfigurationReader;
-import com.cybertek.utilities.Driver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
 
 public class TestCase3 extends TestBase {
 
@@ -25,15 +23,7 @@ public class TestCase3 extends TestBase {
 
         extentLogger = report.createTest("TestCase3-test1()");
 
-        LoginPage loginPage = new LoginPage();
-
-        String username = ConfigurationReader.get("storemanager_username");
-        String password = ConfigurationReader.get("storemanager_password");
-
-        extentLogger.info("username: " + username);
-        extentLogger.info("password: " + password);
-        extentLogger.info("Login as a Store Manager");
-        loginPage.login(username, password);
+        loginAsStoremanager();// tekrari onlemek icin login kodlarini metod icerisine koydum
 
         extentLogger.info("Navigate to “Activities -> Calendar Events”");
         new DashboardPage().navigateToModule("Activities", "Calendar Events");
@@ -54,15 +44,7 @@ public class TestCase3 extends TestBase {
          */
         extentLogger = report.createTest("TestCase3-test2()");
 
-        LoginPage loginPage = new LoginPage();
-
-        String username = ConfigurationReader.get("storemanager_username");
-        String password = ConfigurationReader.get("storemanager_password");
-
-        extentLogger.info("username: " + username);
-        extentLogger.info("password: " + password);
-        extentLogger.info("Login as a Store Manager");
-        loginPage.login(username, password);
+        loginAsStoremanager();// tekrari onlemek icin login kodlarini metod icerisine koydum
 
         extentLogger.info("Navigate to “Activities -> Calendar Events”");
         new DashboardPage().navigateToModule("Activities", "Calendar Events");
@@ -83,15 +65,7 @@ public class TestCase3 extends TestBase {
          */
         extentLogger = report.createTest("TestCase3-test3()");
 
-        LoginPage loginPage = new LoginPage();
-
-        String username = ConfigurationReader.get("storemanager_username");
-        String password = ConfigurationReader.get("storemanager_password");
-
-        extentLogger.info("username: " + username);
-        extentLogger.info("password: " + password);
-        extentLogger.info("Login as a Store Manager");
-        loginPage.login(username, password);
+        loginAsStoremanager();// tekrari onlemek icin login kodlarini metod icerisine koydum
 
         extentLogger.info("Navigate to “Activities -> Calendar Events”");
         new DashboardPage().navigateToModule("Activities", "Calendar Events");
@@ -115,16 +89,9 @@ public class TestCase3 extends TestBase {
          */
         extentLogger = report.createTest("TestCase3-test4()");
 
-        LoginPage loginPage = new LoginPage();
         CalendarEventsPage calendarEventsPage = new CalendarEventsPage();
 
-        String username = ConfigurationReader.get("storemanager_username");
-        String password = ConfigurationReader.get("storemanager_password");
-
-        extentLogger.info("username: " + username);
-        extentLogger.info("password: " + password);
-        extentLogger.info("Login as a Store Manager");
-        loginPage.login(username, password);
+        loginAsStoremanager();// tekrari onlemek icin login kodlarini metod icerisine koydum
 
         extentLogger.info("Navigate to “Activities -> Calendar Events”");
         new DashboardPage().navigateToModule("Activities", "Calendar Events");
@@ -134,7 +101,7 @@ public class TestCase3 extends TestBase {
 
         extentLogger.info("Verify that number of calendar events (rows in the table) is equals to number of records");
         String totalRecordText = calendarEventsPage.textOFnumberOfEvents.getText();//Get text Total of .... Records
-        int expectedNumberOfEvents = Integer.valueOf(totalRecordText.replaceAll("[^0-9]", ""));//select number of in it
+        int expectedNumberOfEvents = Integer.parseInt(totalRecordText.replaceAll("[^0-9]", ""));//select number of in it
         int actualNumberOfEvents = calendarEventsPage.calculateNumberOfEvents();
         Assert.assertEquals(actualNumberOfEvents, expectedNumberOfEvents);
 
@@ -153,16 +120,9 @@ public class TestCase3 extends TestBase {
 
         extentLogger = report.createTest("TestCase3-test5()");
 
-        LoginPage loginPage = new LoginPage();
         CalendarEventsPage calendarEventsPage = new CalendarEventsPage();
 
-        String username = ConfigurationReader.get("storemanager_username");
-        String password = ConfigurationReader.get("storemanager_password");
-
-        extentLogger.info("username: " + username);
-        extentLogger.info("password: " + password);
-        extentLogger.info("Login as a Store Manager");
-        loginPage.login(username, password);
+        loginAsStoremanager();// tekrari onlemek icin login kodlarini metod icerisine koydum;
 
         extentLogger.info("Navigate to “Activities -> Calendar Events”");
         new DashboardPage().navigateToModule("Activities", "Calendar Events");
@@ -202,16 +162,9 @@ public class TestCase3 extends TestBase {
 
         extentLogger = report.createTest("TestCase3-test6()");
 
-        LoginPage loginPage = new LoginPage();
         CalendarEventsPage calendarEventsPage = new CalendarEventsPage();
 
-        String username = ConfigurationReader.get("storemanager_username");
-        String password = ConfigurationReader.get("storemanager_password");
-
-        extentLogger.info("username: " + username);
-        extentLogger.info("password: " + password);
-        extentLogger.info("Login as a Store Manager");
-        loginPage.login(username, password);
+        loginAsStoremanager();// tekrari onlemek icin login kodlarini metod icerisine koydum
 
         extentLogger.info("Navigate to “Activities -> Calendar Events”");
         new DashboardPage().navigateToModule("Activities", "Calendar Events");
@@ -229,4 +182,17 @@ public class TestCase3 extends TestBase {
         extentLogger.pass("PASS: TestCase3-test6() Test");
     }
 
+
+    private void loginAsStoremanager(){
+
+        LoginPage loginPage = new LoginPage();
+
+        String username = ConfigurationReader.get("storemanager_username");
+        String password = ConfigurationReader.get("storemanager_password");
+
+        extentLogger.info("username: " + username);
+        extentLogger.info("password: " + password);
+        extentLogger.info("Login as a Store Manager");
+        loginPage.login(username, password);
+    }
 }
